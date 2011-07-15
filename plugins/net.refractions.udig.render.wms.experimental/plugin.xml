@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+     <extension
+         id="ExperimentalWMSRenderer"
+         name="ExperimentalWMSRenderer"
+         point="net.refractions.udig.project.renderer">
+      <renderer
+            class="net.refractions.udig.render.internal.wms.experimental.ExperimentalWMSMetricsFactory2"
+            id="net.refractions.udig.render.internal.wms.basic.basicwmsrenderer"
+            name="%renderer.name">
+         <description>
+            %renderer.desc
+         </description>
+         
+      </renderer>
+   </extension>
+     <extension
+           point="org.eclipse.core.runtime.preferences">
+        <initializer class="net.refractions.udig.render.wms.experimental.preferences.PreferenceInitializer"/>
+     </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="net.refractions.udig.project.ui.preferences.render"
+            class="net.refractions.udig.render.wms.experimental.preferences.ExperimentalWMSRendererPreferencePage"
+            id="net.refractions.udig.render.wms.basic.preferences.BasicWMSRendererPreferencePage"
+            name="%ExperimentalWMSPreference"/>
+   </extension>
+</plugin>
