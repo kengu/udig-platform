@@ -39,7 +39,7 @@ import net.refractions.udig.ui.ProgressManager;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.ui.IMemento;
-import org.geotools.data.CachingFeatureSource;
+//import org.geotools.data.CachingFeatureSource;
 import org.geotools.data.DataStore;
 import org.geotools.data.DefaultQuery;
 import org.geotools.data.FeatureSource;
@@ -84,18 +84,20 @@ public class CacheInterceptor
         }
         if (prop instanceof Boolean && Boolean.TRUE.equals(prop)) {
             try {
-                CachingFeatureSource cachingFeatureSource = (CachingFeatureSource) layer.getBlackboard().get("cache");
-                if( cachingFeatureSource != null ){
-                    return cachingFeatureSource;
-                }                
-                cachingFeatureSource = new CachingFeatureSource(resource);
-                layer.getBlackboard().put("cache", cachingFeatureSource);
-                return cachingFeatureSource;
-            } catch (IOException e) {
-                if ( ProjectPlugin.getPlugin().isDebugging()){
-                    ProjectPlugin.getPlugin().log("Unable to cache "+resource+":"+e.getLocalizedMessage());
-                    e.printStackTrace();
-                }
+                throw new UnsupportedOperationException("Implementation is using CachingFeatureSource, which is now decreaped");
+//                CachingFeatureSource cachingFeatureSource = (CachingFeatureSource) layer.getBlackboard().get("cache");
+//                if( cachingFeatureSource != null ){
+//                    return cachingFeatureSource;
+//                }                
+//                cachingFeatureSource = new CachingFeatureSource(resource);
+//                layer.getBlackboard().put("cache", cachingFeatureSource);
+//                return cachingFeatureSource;
+//            } catch (IOException e) {
+              } catch (Exception e) {
+//                if ( ProjectPlugin.getPlugin().isDebugging()){
+//                    ProjectPlugin.getPlugin().log("Unable to cache "+resource+":"+e.getLocalizedMessage());
+//                    e.printStackTrace();
+//                }
             }
         }
         return resource; // no wrapper needed
